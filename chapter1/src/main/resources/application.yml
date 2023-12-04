@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: sharding-chapter1
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_origin?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+    props:
+      sql: show
+server:
+  port: 9812

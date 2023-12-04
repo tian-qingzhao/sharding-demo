@@ -1,0 +1,79 @@
+spring:
+  application:
+    name: sharding-chapter2
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_origin?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+
+    rules:
+      sharding:
+         ### 使用 orderId 分片
+#        tables:
+#          # 分表配置的规则分为三个部分：
+#          # spring.shardingsphere.rules.sharding.tables：对逻辑表进行配置
+#          # actual-data-nodes：通过inline配置真实表，这里的真实表为：T_ORDER_0，T_ORDER_1，T_ORDER_2，T_ORDER_3
+#          # table-strategy：配置分片算法，分片键
+#          # key-generate-strategy：配置主键生成策略
+#          # 配置逻辑表
+#          t_order:
+#            actual-data-nodes: ds0.T_ORDER_$->{0..3} #配置真实表
+#            table-strategy: # 分表策略
+#              standard:
+#                sharding-column: order_id # 按照分表的列即sharding-key
+#                sharding-algorithm-name: alg-order-inline  # 分表算法名称
+#            key-generate-strategy: #主键生成策略
+#              column: order_id # 指定主键列
+#              key-generator-name: snowflake-id # 配置主键生成策略， 使用雪花算法
+#        # 配置分片策略，这里指定使用行表达式（INLINE）分片算法。使用 Groovy 的表达式，
+#        # 提供对 SQL 语句中的 =  和 IN  的分片操作支持，只支持单分片键。 对于简单的分片算法，
+#        # 可以通过简单的配置使用，从而避免繁琐的 Java 代码开发。
+#        # 这里配置的表达式T_ORDER_$->{order_id % 4} 表示T_ORDER表根据order_id模4，而分成4张表。
+#        sharding-algorithms:
+#          alg-order-inline:
+#            type: INLINE
+#            props:
+#              algorithm-expression: T_ORDER_$->{order_id % 4}
+#        key-generators:
+#          snowflake-id:
+##            type: SNOWFLAKE # 配置主键生成算法。数据分片以后不能使用自增键和自增序列，这里使用的是ShardingSphere内置的分片生成器SNOWFLAKE。
+##            props: # SNOWFLAKE算法在不同毫秒内所生成的 key 取模 2^n  (2^n一般为分库或分表数) 之后结果总为 0 或 1。这样的话数据只会落到 T_ORDER_0 和 T_ORDER_1中，所以为防止上述分片问题，建议将此属性值配置为 (2^n)-1 。
+##              max-vibration-offset: 15
+#            type: COSID_SNOWFLAKE #或者我们可以使用CosId-Snowflake，相比于内置SNOWFLAKE算法它解决了 时钟回拨问题 、机器号分配问题 。
+
+        ### 使用 orderNo 分片
+        # 很多情况下我们并不一定是使用主键（Long）进行分表，而是使用其他字符串字段（OrderNo）进行分表。
+        # 这时候再采取上文提到的INLINE或者MOD算法就不行了，应该使用内置的HashMod算法，先对分片键进行一次Hash操作再进行分表。
+        tables:
+          # 配置逻辑表
+          t_order:
+            actual-data-nodes: ds0.T_ORDER_$->{0..3} #配置真实表
+            table-strategy: #分表策略
+              standard:
+                sharding-column: order_no # 按照分表的列即sharding-key
+                sharding-algorithm-name: alg_hash_mod  # 分表算法名称
+            key-generate-strategy: #主键生成策略
+              column: order_id # 指定主键列
+              key-generator-name: key-cosid_snowflake # 使用雪花算法
+        sharding-algorithms:
+          alg_hash_mod:
+            type: HASH_MOD
+            props:
+              sharding-count: 4
+        key-generators:
+          key-cosid_snowflake:
+            type: COSID_SNOWFLAKE
+
+    props:
+      sql: show
+server:
+  port: 9813
