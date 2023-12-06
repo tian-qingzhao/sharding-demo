@@ -1,0 +1,91 @@
+spring:
+  application:
+    name: sharding-chapter7
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_0?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_1?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+    rules:
+      sharding:
+        binding-tables: # 当表互为绑定表后关联查询就不会产生笛卡尔积了
+          # 何为绑定表：
+          # 绑定表：分片规则一致的主表和子表
+          # 绑定表这里需要满足的条件：
+          # 1.  分片键相同
+          # 2. 分片规则一致
+          # 中指定主表和明细表的逻辑表即可
+          - T_ORDER,T_ORDER_ITEM
+        broadcast-tables:
+          # 指定广播表，集合形式
+          - T_DICT
+        tables:
+          # 配置逻辑表
+          t_order:
+            actual-data-nodes: ds$->{0..1}.T_ORDER_$->{0..3}
+            key-generate-strategy: #主键生成策略
+              column: order_id # 指定主键列
+              key-generator-name: key-order # 使用雪花算法
+            database-strategy: # 配置分库策略
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-database-order
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-table-order
+          t_order_item:
+            actual-data-nodes: ds$->{0..1}.T_ORDER_ITEM_$->{0..3}
+            key-generate-strategy: #主键生成策略
+              column: order_item_id # 指定主键列
+              key-generator-name: key-order-item # 使用雪花算法
+            database-strategy: # 配置分库策略
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-database-order-item
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-table-order-item
+        sharding-algorithms:
+          alg-database-order:
+            type: MOD
+            props:
+              sharding-count: 2
+          alg-table-order:
+            type: INLINE
+            props:
+              algorithm-expression: T_ORDER_$->{Math.abs(String.valueOf(order_id).hashCode() % 4)}
+          alg-database-order-item:
+            type: MOD
+            props:
+              sharding-count: 2
+          alg-table-order-item:
+            type: INLINE
+            props:
+              algorithm-expression: T_ORDER_ITEM_$->{Math.abs(String.valueOf(order_id).hashCode() % 4)}
+        key-generators:
+          key-order:
+            type: COSID_SNOWFLAKE
+          key-order-item:
+            type: COSID_SNOWFLAKE
+
+    props:
+      sql-show: true
+
+server:
+  port: 9817

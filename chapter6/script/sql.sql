@@ -23,3 +23,5 @@ INSERT INTO `T_DICT`
 VALUES (2, 'ORDER_STATUS', '2', '待发货');
 INSERT INTO `T_DICT`
 VALUES (3, 'ORDER_STATUS', '3', '待签收');
+
+-- 同时需要使用 chapter4 模块的sql

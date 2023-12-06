@@ -5,7 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 我们在系统开发时经常会使用字典表保存数据的各种状态，这些表的数据量不大，但是却被很多表关联。
+ * 广播表的测试。
+ *
+ * <p>开发时经常会使用字典表保存数据的各种状态，这些表的数据量不大，但是却被很多表关联。
  * 在使用微服务开发由于需要按照服务进行分库，那为了保证每个服务可以方便的与字典数据进行关联，
  * 我们要么通过定时任务将字典同步到各个服务所在库中，要么通过消息队列分发到各个服务。
  * 在ShardingSphere中把这样的表叫做广播表，借助ShardingSphere提供的能力可以很好的完成数据同步，
