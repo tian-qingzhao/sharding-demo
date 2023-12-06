@@ -17,4 +17,4 @@ spring:
     props:
       sql: show
 server:
-  port: 9812
+  port: 9811

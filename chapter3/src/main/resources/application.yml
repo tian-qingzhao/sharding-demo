@@ -57,4 +57,4 @@ spring:
       sql-show: true
 
 server:
-  port: 9814
+  port: 9813

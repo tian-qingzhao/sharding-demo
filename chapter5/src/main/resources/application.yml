@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: sharding-chapter5
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/monitor_0?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/monitor_1?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+    rules:
+      sharding:
+        tables:
+          # 配置逻辑表
+          t_event:
+            actual-data-nodes: ds$->{0..1}.t_event_$->{20231210..20231215}
+            key-generate-strategy: #主键生成策略
+              column: event_id # 指定主键列
+              key-generator-name: key-cosid_snowflake # 使用雪花算法
+            database-strategy: # 配置分库策略
+              standard:
+                sharding-column: machine_no
+                sharding-algorithm-name: alg-database-event
+            table-strategy:
+              standard:
+                sharding-column: day_value
+                sharding-algorithm-name: alg-table-event
+        sharding-algorithms:
+          alg-database-event:
+            type: HASH_MOD
+            props:
+              sharding-count: 2
+          alg-table-event:
+            type: INLINE
+            props:
+              algorithm-expression: t_event_$->{day_value}
+        key-generators:
+          key-cosid_snowflake:
+            type: COSID_SNOWFLAKE
+
+server:
+  port: 9815

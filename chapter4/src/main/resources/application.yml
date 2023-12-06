@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: sharding-chapter4
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_0?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_1?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+    rules:
+      sharding:
+        tables:
+          # 配置逻辑表
+          t_order:
+            actual-data-nodes: ds$->{0..1}.T_ORDER_$->{0..3}
+            key-generate-strategy: #主键生成策略
+              column: order_id # 指定主键列
+              key-generator-name: key-cosid_snowflake # 使用雪花算法
+            database-strategy: # 分库策略
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-database-order-inline
+            table-strategy:  #分表策略
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-table-order-inline
+        sharding-algorithms:
+          alg-database-order-inline:
+            type: INLINE
+            props:
+              algorithm-expression: ds$->{order_id % 2}
+          alg-table-order-inline:
+            type: INLINE
+            props:
+              algorithm-expression: T_ORDER_$->{order_id % 4}
+        key-generators:
+          key-cosid_snowflake:
+            type: COSID_SNOWFLAKE
+
+# 在order_0数据库中只有T_ORDER_0和T_ORDER_2有数据，T_ORDER_1和T_ORDER_3都没数据。
+# 而在order_1数据库中只有T_ORDER_1和T_ORDER_3有数据，T_ORDER_0和T_ORDER_2都没数据。
+# 上面这种分片方案就是初次使用者特别容易进入的误区， 上面那种INLINE或者内置的MOD分片算法本质是用Hash值分别对分库数和分表数取余，得到库序号和表序号。
+# 其实稍微思索一下，我们就会发现。配置是想让order_id为偶数进入order_0数据库，奇数进入order_1数据库。
+# 那如果order_id为偶数的话对它取模4肯定只会是 0 和 2 ，同理如果order_id为奇数对其模4肯定只会是1 和 3 。
+# 所以在order_0数据库中只有T_ORDER_0 和 T_ORDER_2有数据，这就带来了非常严重的数据偏斜问题，因为某些表中永远不可能有数据，最大数据偏斜率达到了无穷大。
+
+    props:
+      sql-show: true
+
+server:
+  port: 9814
