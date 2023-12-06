@@ -167,6 +167,9 @@ public class InitActualDataNodes implements ApplicationRunner {
         List<String> timeList = Lists.newArrayList(today.format(dateFormatter));
 
         // 倒推15天
+        // 数据的表没有当前天往前推15天的表会报错：
+        // bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException:
+        // Table 'monitor_0.t_event_20231202' doesn't exist
         for (int i = 1; i <= 15; i++) {
             LocalDate day = today.minusDays(i);
             timeList.add(day.format(dateFormatter));

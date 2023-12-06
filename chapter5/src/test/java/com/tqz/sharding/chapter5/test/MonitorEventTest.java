@@ -1,5 +1,6 @@
 package com.tqz.sharding.chapter5.test;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.google.common.collect.Lists;
 import com.tqz.sharding.chapter5.entity.MonitorEvent;
 import com.tqz.sharding.chapter5.mapper.MonitorEventMapper;
@@ -29,7 +30,7 @@ public class MonitorEventTest {
             "100000016525", "100000016526", "100000016527", "100000016528", "100000016529");
 
     @Test
-    public void addEvent() throws IOException {
+    public void addEventTest() throws IOException {
         for (int i = 0; i < 10; i++) {
             MonitorEvent event = MonitorEvent.builder()
                     .machineNo(machineList.get(ThreadLocalRandom.current().nextInt(10)))
@@ -40,6 +41,12 @@ public class MonitorEventTest {
             System.out.println(event);
             monitorEventMapper.insert(event);
         }
+    }
+
+    @Test
+    public void selectListTest() {
+        List<MonitorEvent> monitorEvents = monitorEventMapper.selectList(Wrappers.emptyWrapper());
+        monitorEvents.forEach(System.out::println);
     }
 
     private String getData() {

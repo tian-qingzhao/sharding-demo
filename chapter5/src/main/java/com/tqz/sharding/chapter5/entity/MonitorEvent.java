@@ -5,12 +5,14 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Data
 @Builder
 @TableName("T_EVENT")
+@ToString
 public class MonitorEvent {
 
     @TableId(type = IdType.ASSIGN_ID)
