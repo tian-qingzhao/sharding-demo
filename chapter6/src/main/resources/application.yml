@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: sharding-chapter6
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_0?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_1?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+    rules:
+      sharding:
+        broadcast-tables:
+          # 指定广播表，集合形式
+          - T_DICT
+        tables:
+          # 配置逻辑表
+          t_order:
+            actual-data-nodes: ds$->{0..1}.T_ORDER_$->{0..3}
+            key-generate-strategy: #主键生成策略
+              column: order_id # 指定主键列
+              key-generator-name: key-cosid_snowflake # 使用雪花算法
+            database-strategy: # 分库策略
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-database-order-inline
+            table-strategy: #分表策略
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: alg-table-order-inline
+        sharding-algorithms:
+          alg-database-order-inline:
+            type: INLINE
+            props:
+              algorithm-expression: ds$->{order_id % 2}
+          alg-table-order-inline:
+            type: INLINE
+            props:
+              algorithm-expression: T_ORDER_$->{order_id % 4}
+        key-generators:
+          key-cosid_snowflake:
+            type: COSID_SNOWFLAKE
+
+    props:
+      sql-show: true
+
+server:
+  port: 9816

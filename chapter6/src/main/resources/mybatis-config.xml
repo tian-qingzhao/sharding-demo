@@ -1,0 +1,6 @@
+<configuration>
+    <!-- 其他配置 -->
+    <settings>
+        <setting name="logImpl" value="LOG4J2"/> <!-- 使用日志框架，可以选择LOG4J2或者其他 -->
+    </settings>
+</configuration>
