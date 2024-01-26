@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="提交绑定表，解决笛卡尔积的问题">
+      <change beforePath="$PROJECT_DIR$/chapter7/src/test/java/com/tqz/sharding/chapter7/test/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter7/src/test/java/com/tqz/sharding/chapter8/test/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="E:/software/apache-maven-3.8.8" />
+        <option name="userSettingsFile" value="E:\software\apache-maven-3.8.8\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadAnnotationsAutomatically" value="true" />
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2YvCSxycY3qMqi1vk2b6iX9Dr7W" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "D:/idea_workspace/sharding-demo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.5873563",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "f9956af7a7bf3ba886b4d6d5ce352131",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\idea_workspace\sharding-demo" />
+      <recent name="D:\idea_workspace\sharding-demo\chapter7\src\main\resources" />
+      <recent name="D:\idea_workspace\sharding-demo\chapter6\src\main\resources" />
+      <recent name="D:\idea_workspace\sharding-demo\chapter5\image" />
+      <recent name="D:\idea_workspace\sharding-demo\chapter5\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\idea_workspace\sharding-demo\chapter1" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tqz.sharding.chapter7.entity" />
+      <recent name="com.tqz.sharding.chapter7" />
+      <recent name="com.tqz.sharding.chapter6.mapper" />
+      <recent name="com.tqz.sharding.chapter6.entity" />
+      <recent name="com.tqz.sharding.chapter6" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.OrderTest.queryByOrderId (1)">
+    <configuration name="OrderTest.addOrderWithIndex (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter9" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter9.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderTest" />
+      <option name="METHOD_NAME" value="addOrderWithIndex" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.addOrderWithIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter8.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter8.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter8.test.OrderTest" />
+      <option name="METHOD_NAME" value="addOrderWithIndex" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.queryByOrderId (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter9" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter9.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderTest" />
+      <option name="METHOD_NAME" value="queryByOrderId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.queryByOrderId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter8.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter8.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter8.test.OrderTest" />
+      <option name="METHOD_NAME" value="queryByOrderId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.queryByOrderIdWithIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter8.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter8.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter8.test.OrderTest" />
+      <option name="METHOD_NAME" value="queryByOrderIdWithIndex" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.queryByUserId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter9" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter9.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderTest" />
+      <option name="METHOD_NAME" value="queryByUserId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.OrderTest.queryByOrderId (1)" />
+        <item itemvalue="JUnit.OrderTest.queryByUserId" />
+        <item itemvalue="JUnit.OrderTest.addOrderWithIndex (1)" />
+        <item itemvalue="JUnit.OrderTest.queryByOrderIdWithIndex" />
+        <item itemvalue="JUnit.OrderTest.queryByOrderId" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="" />
+      <created>1701396671178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701396671178</updated>
+      <workItem from="1701396672281" duration="3301000" />
+      <workItem from="1701407977227" duration="6809000" />
+      <workItem from="1701415638385" duration="8234000" />
+      <workItem from="1701653822179" duration="13350000" />
+      <workItem from="1701675260127" duration="1548000" />
+      <workItem from="1701676816387" duration="16000" />
+      <workItem from="1701676838785" duration="4804000" />
+      <workItem from="1701736284412" duration="11342000" />
+      <workItem from="1701822655864" duration="15580000" />
+      <workItem from="1701908619489" duration="5191000" />
+      <workItem from="1702436932632" duration="2446000" />
+      <workItem from="1703584994631" duration="85000" />
+      <workItem from="1704159525206" duration="2186000" />
+      <workItem from="1704241770570" duration="14000" />
+      <workItem from="1705903766304" duration="6000" />
+      <workItem from="1706233090678" duration="16774000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat(all):提交自动建表、刷新分表节点">
+      <option name="closed" value="true" />
+      <created>1701842735496</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701842735496</updated>
+    </task>
+    <task id="LOCAL-00002" summary="完善单元测试">
+      <option name="closed" value="true" />
+      <created>1701844407165</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701844407165</updated>
+    </task>
+    <task id="LOCAL-00003" summary="提交字典关联新增、查询">
+      <option name="closed" value="true" />
+      <created>1701847828541</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701847828541</updated>
+    </task>
+    <task id="LOCAL-00004" summary="提交绑定表，解决笛卡尔积的问题">
+      <option name="closed" value="true" />
+      <created>1701850439191</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701850439191</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat(all):提交自动建表、刷新分表节点" />
+    <MESSAGE value="完善单元测试" />
+    <MESSAGE value="提交字典关联新增、查询" />
+    <MESSAGE value="提交绑定表，解决笛卡尔积的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交绑定表，解决笛卡尔积的问题" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven_repository/org/apache/shardingsphere/shardingsphere-sharding-core/5.2.1/shardingsphere-sharding-core-5.2.1-sources.jar!/org/apache/shardingsphere/sharding/algorithm/sharding/mod/ModShardingAlgorithm.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven_repository/org/apache/shardingsphere/shardingsphere-sharding-core/5.2.1/shardingsphere-sharding-core-5.2.1-sources.jar!/org/apache/shardingsphere/sharding/route/strategy/type/standard/StandardShardingStrategy.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

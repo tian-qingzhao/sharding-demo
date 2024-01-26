@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: sharding-chapter8
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_0?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_1?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+    rules:
+      sharding:
+        tables:
+          # 配置逻辑表
+          t_order:
+            actual-data-nodes: ds0.T_ORDER_$->{0..3}
+            key-generate-strategy: #主键生成策略
+              column: order_id # 指定主键列
+              key-generator-name: key-cosid_snowflake # 使用雪花算法
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: alg-table-order
+        sharding-algorithms:
+          alg-table-order:
+            type: MOD
+            props:
+              sharding-count: 4
+        key-generators:
+          key-cosid_snowflake:
+            type: COSID_SNOWFLAKE
+
+    props:
+      sql-show: true
+
+server:
+  port: 9819

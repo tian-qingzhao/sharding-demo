@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: sharding-chapter9
+  shardingsphere:
+    mode:
+      type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
+      repository: # 持久化仓库配置。
+        type: JDBC
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_0?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: "jdbc:mysql://localhost:3306/order_1?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+        username: root
+        password: tqz123456789.
+    rules:
+      sharding:
+        tables:
+          # 配置逻辑表
+          t_order:
+            actual-data-nodes: ds0.T_ORDER_$->{0..3}
+            table-strategy:
+              complex:
+                sharding-columns: order_id,user_id
+                sharding-algorithm-name: alg-table-order
+        sharding-algorithms:
+          alg-table-order:
+            type: CLASS_BASED
+            props:
+              strategy: COMPLEX #这里在给t_order配置分片策略是制定了使用了complex 分片策略，自定义策略需要使用CLASS_BASED 这一类型，同时指定分片策略的实现类路径。
+              algorithmClassName: com.tqz.sharding.chapter9.algorithm.UserAndOrderComplexTableAlgorithm
+              sharding-count: 4
+
+    props:
+      sql-show: true
+
+server:
+  port: 9822
