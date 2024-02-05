@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="提交非sharding key的索引法和非基因法实现">
+    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="提交根据用户id计算分库号的算法">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter9/src/main/java/com/tqz/sharding/chapter9/algorithm/UserAndOrderComplexTableAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter9/src/main/java/com/tqz/sharding/chapter9/algorithm/UserAndOrderComplexTableAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chapter9/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/chapter9/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter9/src/test/java/com/tqz/sharding/chapter9/test/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter9/src/test/java/com/tqz/sharding/chapter9/test/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -97,7 +99,39 @@
       <recent name="com.tqz.sharding.chapter6" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrderTest.queryByOrderId (1)">
+  <component name="RunManager" selected="JUnit.OrderServiceTest.testXATransaction (1)">
+    <configuration name="OrderServiceTest.testXATransaction (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter10" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter10.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter10.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter10.test.OrderServiceTest" />
+      <option name="METHOD_NAME" value="testXATransaction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceTest.testXATransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter9" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter9.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderServiceTest" />
+      <option name="METHOD_NAME" value="testXATransaction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderTest.addOrderWithIndex (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chapter9" />
       <extension name="coverage">
@@ -108,22 +142,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
       <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderTest" />
-      <option name="METHOD_NAME" value="addOrderWithIndex" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderTest.addOrderWithIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chapter8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tqz.sharding.chapter8.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter8.test" />
-      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter8.test.OrderTest" />
       <option name="METHOD_NAME" value="addOrderWithIndex" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -141,38 +159,6 @@
       <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
       <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderTest" />
       <option name="METHOD_NAME" value="queryByOrderId" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderTest.queryByOrderId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chapter8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tqz.sharding.chapter8.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter8.test" />
-      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter8.test.OrderTest" />
-      <option name="METHOD_NAME" value="queryByOrderId" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderTest.queryByOrderIdWithIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chapter8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tqz.sharding.chapter8.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter8.test" />
-      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter8.test.OrderTest" />
-      <option name="METHOD_NAME" value="queryByOrderIdWithIndex" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -196,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderServiceTest.testXATransaction (1)" />
         <item itemvalue="JUnit.OrderTest.queryByOrderId (1)" />
-        <item itemvalue="JUnit.OrderTest.queryByUserId" />
+        <item itemvalue="JUnit.OrderServiceTest.testXATransaction" />
         <item itemvalue="JUnit.OrderTest.addOrderWithIndex (1)" />
-        <item itemvalue="JUnit.OrderTest.queryByOrderIdWithIndex" />
-        <item itemvalue="JUnit.OrderTest.queryByOrderId" />
+        <item itemvalue="JUnit.OrderTest.queryByUserId" />
       </list>
     </recent_temporary>
   </component>
@@ -229,7 +215,7 @@
       <workItem from="1705903766304" duration="6000" />
       <workItem from="1706233090678" duration="18121000" />
       <workItem from="1706518823538" duration="2146000" />
-      <workItem from="1707114774492" duration="2294000" />
+      <workItem from="1707114774492" duration="13580000" />
     </task>
     <task id="LOCAL-00001" summary="feat(all):提交自动建表、刷新分表节点">
       <option name="closed" value="true" />
@@ -271,7 +257,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706259566462</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="添加userId的分库算法解决数据倾斜问题">
+      <option name="closed" value="true" />
+      <created>1707117400735</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707117400735</updated>
+    </task>
+    <task id="LOCAL-00007" summary="提交根据用户id计算分库号的算法">
+      <option name="closed" value="true" />
+      <created>1707117539489</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707117539489</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +296,9 @@
     <MESSAGE value="提交字典关联新增、查询" />
     <MESSAGE value="提交绑定表，解决笛卡尔积的问题" />
     <MESSAGE value="提交非sharding key的索引法和非基因法实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交非sharding key的索引法和非基因法实现" />
+    <MESSAGE value="添加userId的分库算法解决数据倾斜问题" />
+    <MESSAGE value="提交根据用户id计算分库号的算法" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交根据用户id计算分库号的算法" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -309,12 +313,13 @@
           <line>86</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/chapter9/src/test/java/com/tqz/sharding/chapter9/test/OrderTest.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.apache.shardingsphere.infra.route.context.RouteContext" memberName="routeUnits" />
+        <PinnedItemInfo parentTag="java.util.Optional" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
