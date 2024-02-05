@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="提交绑定表，解决笛卡尔积的问题">
-      <change beforePath="$PROJECT_DIR$/chapter7/src/test/java/com/tqz/sharding/chapter7/test/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter7/src/test/java/com/tqz/sharding/chapter8/test/OrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="提交非sharding key的索引法和非基因法实现">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter9/src/main/java/com/tqz/sharding/chapter9/algorithm/UserAndOrderComplexTableAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter9/src/main/java/com/tqz/sharding/chapter9/algorithm/UserAndOrderComplexTableAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter9/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/chapter9/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter9/src/test/java/com/tqz/sharding/chapter9/test/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter9/src/test/java/com/tqz/sharding/chapter9/test/OrderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,26 +54,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "D:/idea_workspace/sharding-demo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.5873563",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "f9956af7a7bf3ba886b4d6d5ce352131",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/idea_workspace/sharding-demo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.5873563&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;3aec46e9634d35ea212a6ed74b41ede0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\idea_workspace\sharding-demo" />
@@ -82,6 +85,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\idea_workspace\sharding-demo\chapter1" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.tqz.sharding.chapter7" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.tqz.sharding.chapter7.entity" />
@@ -221,7 +227,9 @@
       <workItem from="1704159525206" duration="2186000" />
       <workItem from="1704241770570" duration="14000" />
       <workItem from="1705903766304" duration="6000" />
-      <workItem from="1706233090678" duration="16774000" />
+      <workItem from="1706233090678" duration="18121000" />
+      <workItem from="1706518823538" duration="2146000" />
+      <workItem from="1707114774492" duration="2294000" />
     </task>
     <task id="LOCAL-00001" summary="feat(all):提交自动建表、刷新分表节点">
       <option name="closed" value="true" />
@@ -255,18 +263,38 @@
       <option name="project" value="LOCAL" />
       <updated>1701850439191</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="提交非sharding key的索引法和非基因法实现">
+      <option name="closed" value="true" />
+      <created>1706259566462</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706259566462</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(all):提交自动建表、刷新分表节点" />
     <MESSAGE value="完善单元测试" />
     <MESSAGE value="提交字典关联新增、查询" />
     <MESSAGE value="提交绑定表，解决笛卡尔积的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交绑定表，解决笛卡尔积的问题" />
+    <MESSAGE value="提交非sharding key的索引法和非基因法实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交非sharding key的索引法和非基因法实现" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -280,6 +308,11 @@
           <url>jar://$PROJECT_DIR$/../../maven_repository/org/apache/shardingsphere/shardingsphere-sharding-core/5.2.1/shardingsphere-sharding-core-5.2.1-sources.jar!/org/apache/shardingsphere/sharding/route/strategy/type/standard/StandardShardingStrategy.java</url>
           <line>86</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/chapter9/src/test/java/com/tqz/sharding/chapter9/test/OrderTest.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

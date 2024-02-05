@@ -86,10 +86,16 @@ public class OrderTest {
      * 根据order_id查询
      */
     @Test
-    public void queryByOrderId(){
+    public void queryByOrderId() {
         Long orderId = 1750753015943069698L;
+        Long userId = 17L;
         QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("order_id", orderId);
+
+        // 在使用了 `UserStandardAlgorithm` 分库算法之后，并且使用了 userId 的hashCode进行计算分库号，
+        // 所以查询的时候要带上 userId 字段
+        queryWrapper.eq("user_id", userId);
+
         List<Order> orders = orderMapper.selectList(queryWrapper);
         orders.forEach(System.out::println);
 

@@ -25,12 +25,22 @@ spring:
         tables:
           # 配置逻辑表
           t_order:
-            actual-data-nodes: ds0.T_ORDER_$->{0..3}
+            actual-data-nodes: ds$->{0..1}.T_ORDER_$->{0..3}
+            database-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: alg-db-order
             table-strategy:
               complex:
                 sharding-columns: order_id,user_id
                 sharding-algorithm-name: alg-table-order
         sharding-algorithms:
+          alg-db-order:
+            type: CLASS_BASED
+            props:
+              strategy: STANDARD
+              algorithmClassName: com.tqz.sharding.chapter9.algorithm.UserStandardAlgorithm
+              sharding-count: 2
           alg-table-order:
             type: CLASS_BASED
             props:

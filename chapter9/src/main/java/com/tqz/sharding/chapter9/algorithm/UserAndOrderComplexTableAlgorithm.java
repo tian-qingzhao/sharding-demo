@@ -70,7 +70,8 @@ public class UserAndOrderComplexTableAlgorithm implements ComplexKeysShardingAlg
     }
 
     private int getShardingCount(final Properties props) {
-        Preconditions.checkArgument(props.containsKey(SHARDING_COUNT_KEY), "Sharding count can not be null.");
+        Preconditions.checkArgument(props.containsKey(SHARDING_COUNT_KEY),
+                "Sharding count can not be null.");
         return Integer.parseInt(props.getProperty(SHARDING_COUNT_KEY));
     }
 
