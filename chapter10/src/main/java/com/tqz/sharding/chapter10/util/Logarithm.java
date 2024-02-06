@@ -13,8 +13,8 @@ public class Logarithm {
      * @param value 要计算的值
      * @return 对数值
      */
-    public static int log(int base, int value) {
-        return (int) Math.log(value) / (int) Math.log(base);
+    public static double log(int base, int value) {
+        return Math.log(value) / Math.log(base);
     }
 
     /**
@@ -24,6 +24,6 @@ public class Logarithm {
      * @return 如果是整数返回true，否则返回false
      */
     public static boolean isInt(double value) {
-        return value == (int) value;
+        return Math.abs(value - Math.round(value)) < Double.MIN_VALUE;
     }
 }
