@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="提交根据用户id计算分库号的算法">
+    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="使用 @Transaction 能解决多库的本地事务回滚">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter9/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/chapter9/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter10/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/chapter10/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter10/src/test/java/com/tqz/sharding/chapter10/test/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter10/src/test/java/com/tqz/sharding/chapter10/test/OrderServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,27 +57,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/idea_workspace/sharding-demo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.5873563&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;3aec46e9634d35ea212a6ed74b41ede0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "D:/idea_workspace/sharding-demo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.5873563",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "spring.configuration.checksum": "ee42eda892ac9f2e91af92f229f3b889",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\idea_workspace\sharding-demo" />
@@ -100,7 +101,7 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.OrderServiceTest.testXATransaction (1)">
-    <configuration name="OrderServiceTest.testXATransaction (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderServiceTest.testLocalTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chapter10" />
       <extension name="coverage">
         <pattern>
@@ -110,6 +111,22 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter10.test" />
       <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter10.test.OrderServiceTest" />
+      <option name="METHOD_NAME" value="testLocalTransaction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceTest.testXATransaction (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter11" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter11.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter11.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter11.test.OrderServiceTest" />
       <option name="METHOD_NAME" value="testXATransaction" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -164,29 +181,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderTest.queryByUserId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chapter9" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tqz.sharding.chapter9.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
-      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderTest" />
-      <option name="METHOD_NAME" value="queryByUserId" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.OrderServiceTest.testXATransaction (1)" />
+        <item itemvalue="JUnit.OrderServiceTest.testLocalTransaction" />
         <item itemvalue="JUnit.OrderTest.queryByOrderId (1)" />
         <item itemvalue="JUnit.OrderServiceTest.testXATransaction" />
         <item itemvalue="JUnit.OrderTest.addOrderWithIndex (1)" />
-        <item itemvalue="JUnit.OrderTest.queryByUserId" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +216,8 @@
       <workItem from="1705903766304" duration="6000" />
       <workItem from="1706233090678" duration="18121000" />
       <workItem from="1706518823538" duration="2146000" />
-      <workItem from="1707114774492" duration="13580000" />
+      <workItem from="1707114774492" duration="14322000" />
+      <workItem from="1707188161167" duration="6695000" />
     </task>
     <task id="LOCAL-00001" summary="feat(all):提交自动建表、刷新分表节点">
       <option name="closed" value="true" />
@@ -273,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707117539489</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="使用 @Transaction 能解决多库的本地事务回滚">
+      <option name="closed" value="true" />
+      <created>1707129051824</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707129051824</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +308,8 @@
     <MESSAGE value="提交非sharding key的索引法和非基因法实现" />
     <MESSAGE value="添加userId的分库算法解决数据倾斜问题" />
     <MESSAGE value="提交根据用户id计算分库号的算法" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交根据用户id计算分库号的算法" />
+    <MESSAGE value="使用 @Transaction 能解决多库的本地事务回滚" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用 @Transaction 能解决多库的本地事务回滚" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -321,5 +332,9 @@
         <PinnedItemInfo parentTag="java.util.Optional" memberName="value" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,6 +1,6 @@
-package com.tqz.sharding.chapter10.test;
+package com.tqz.sharding.chapter11.test;
 
-import com.tqz.sharding.chapter10.service.OrderService;
+import com.tqz.sharding.chapter11.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,8 @@ public class OrderServiceTest {
     private OrderService orderService;
 
     @Test
-    public void testLocalTransaction() {
+    public void testXATransaction() {
         orderService.addOrder();
     }
+
 }

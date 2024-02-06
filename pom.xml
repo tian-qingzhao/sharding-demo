@@ -22,6 +22,7 @@
         <module>chapter8</module>
         <module>chapter9</module>
         <module>chapter10</module>
+        <module>chapter11</module>
     </modules>
 
     <properties>
@@ -54,6 +55,12 @@
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${sharding-sphere.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-transaction-xa-core</artifactId>
                 <version>${sharding-sphere.version}</version>
             </dependency>
 

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sharding-chapter10
+    name: sharding-chapter11
   shardingsphere:
     mode:
       type: Standalone # 运行模式类型。可选配置：Standalone、Cluster
@@ -39,13 +39,13 @@ spring:
             type: CLASS_BASED
             props:
               strategy: STANDARD
-              algorithmClassName: com.tqz.sharding.chapter10.algorithm.UserStandardAlgorithm
+              algorithmClassName: com.tqz.sharding.chapter11.algorithm.UserStandardAlgorithm
               sharding-count: 2
           alg-table-order:
             type: CLASS_BASED
             props:
               strategy: COMPLEX #这里在给t_order配置分片策略是制定了使用了complex 分片策略，自定义策略需要使用CLASS_BASED 这一类型，同时指定分片策略的实现类路径。
-              algorithmClassName: com.tqz.sharding.chapter10.algorithm.UserAndOrderComplexTableAlgorithm
+              algorithmClassName: com.tqz.sharding.chapter11.algorithm.UserAndOrderComplexTableAlgorithm
               sharding-count: 4
 
     props:
