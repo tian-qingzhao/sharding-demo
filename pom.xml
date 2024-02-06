@@ -23,6 +23,7 @@
         <module>chapter9</module>
         <module>chapter10</module>
         <module>chapter11</module>
+        <module>chapter12</module>
     </modules>
 
     <properties>
@@ -64,6 +65,11 @@
                 <version>${sharding-sphere.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-transaction-base-seata-at</artifactId>
+                <version>${sharding-sphere.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.projectlombok</groupId>

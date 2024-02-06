@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="使用 @Transaction 能解决多库的本地事务回滚">
+    <list default="true" id="215931b3-90f5-4ed6-b27d-19d02e9affa8" name="Changes" comment="使用XA模式实现ShardingShpere的分布式事务">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter10/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/chapter10/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter10/src/test/java/com/tqz/sharding/chapter10/test/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/chapter10/src/test/java/com/tqz/sharding/chapter10/test/OrderServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter11/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chapter11/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +72,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.5873563",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
     "spring.configuration.checksum": "ee42eda892ac9f2e91af92f229f3b889",
     "vue.rearranger.settings.migration": "true"
@@ -100,7 +100,24 @@
       <recent name="com.tqz.sharding.chapter6" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrderServiceTest.testXATransaction (1)">
+  <component name="RunManager" selected="JUnit.OrderServiceTest.testBaseTransaction">
+    <configuration name="OrderServiceTest.testBaseTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter12" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tqz.sharding.chapter12.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter12.test" />
+      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter12.test.OrderServiceTest" />
+      <option name="METHOD_NAME" value="testBaseTransaction" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="--add-opens java.base/java.lang=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderServiceTest.testLocalTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chapter10" />
       <extension name="coverage">
@@ -149,22 +166,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderTest.addOrderWithIndex (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chapter9" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tqz.sharding.chapter9.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tqz.sharding.chapter9.test" />
-      <option name="MAIN_CLASS_NAME" value="com.tqz.sharding.chapter9.test.OrderTest" />
-      <option name="METHOD_NAME" value="addOrderWithIndex" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OrderTest.queryByOrderId (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chapter9" />
       <extension name="coverage">
@@ -181,13 +182,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.OrderServiceTest.testBaseTransaction" />
+      <item itemvalue="JUnit.OrderServiceTest.testLocalTransaction" />
+      <item itemvalue="JUnit.OrderServiceTest.testXATransaction" />
+      <item itemvalue="JUnit.OrderServiceTest.testXATransaction (1)" />
+      <item itemvalue="JUnit.OrderTest.queryByOrderId (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderServiceTest.testBaseTransaction" />
         <item itemvalue="JUnit.OrderServiceTest.testXATransaction (1)" />
         <item itemvalue="JUnit.OrderServiceTest.testLocalTransaction" />
         <item itemvalue="JUnit.OrderTest.queryByOrderId (1)" />
         <item itemvalue="JUnit.OrderServiceTest.testXATransaction" />
-        <item itemvalue="JUnit.OrderTest.addOrderWithIndex (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +225,7 @@
       <workItem from="1706233090678" duration="18121000" />
       <workItem from="1706518823538" duration="2146000" />
       <workItem from="1707114774492" duration="14322000" />
-      <workItem from="1707188161167" duration="6695000" />
+      <workItem from="1707188161167" duration="10681000" />
     </task>
     <task id="LOCAL-00001" summary="feat(all):提交自动建表、刷新分表节点">
       <option name="closed" value="true" />
@@ -283,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707129051824</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="使用XA模式实现ShardingShpere的分布式事务">
+      <option name="closed" value="true" />
+      <created>1707200611366</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1707200611366</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +325,8 @@
     <MESSAGE value="添加userId的分库算法解决数据倾斜问题" />
     <MESSAGE value="提交根据用户id计算分库号的算法" />
     <MESSAGE value="使用 @Transaction 能解决多库的本地事务回滚" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用 @Transaction 能解决多库的本地事务回滚" />
+    <MESSAGE value="使用XA模式实现ShardingShpere的分布式事务" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用XA模式实现ShardingShpere的分布式事务" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
